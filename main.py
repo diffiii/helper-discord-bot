@@ -40,6 +40,7 @@ class Helper(commands.Bot):
                 print(f'\nFailed to load extension "{extension}":\n> {type(e).__name__}: {e}')
 
     async def on_ready(self):
+        await self.change_presence(activity = discord.Game(name = 'Helper 3.0'))
         print(f'\nBot has been initialized.\n> Name: {self.user}\n> ID: {self.user.id}\n')
 
     def run(self):
