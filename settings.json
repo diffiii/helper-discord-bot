@@ -1,10 +1,11 @@
 {
-    "token": "Nzc2NDU0ODU4MzU4MTI4Njgz.X61H8A.AVIBpEJTmnMlQfvkK5iZolZxNKU",
+    "token": "Nzc2NDU0ODU4MzU4MTI4Njgz.X61H8A.CuRVcuxdhZG2qjYi5T16Jj6MMbs",
     "prefix": ".",
     "extensions": [
         "cogs.admin",
         "cogs.covid19",
         "cogs.nicks",
+        "cogs.support",
         "cogs.utilities"
     ]
 }

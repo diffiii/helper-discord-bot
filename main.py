@@ -43,6 +43,15 @@ class Helper(commands.Bot):
         await self.change_presence(activity = discord.Game(name = 'Helper 3.0'))
         print(f'\nBot has been initialized.\n> Name: {self.user}\n> ID: {self.user.id}\n')
 
+    async def on_message(self, message):
+        if message.channel.id == 770743052494176316:
+            if not message.content.startswith('.'):
+                if message.author.id != self.user.id and message.author.id != 593767655584956426:
+                    await message.delete()
+
+        await self.process_commands(message)
+
+
     def run(self):
         super().run(settings['token'])
 
