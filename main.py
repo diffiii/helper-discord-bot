@@ -75,7 +75,8 @@ class Helper(commands.Bot):
                 'czekaj bo gram w szachy teraz',
                 'nie mogę teraz, zaszachował mnie ziomeczek',
                 'daj mi chwilę, zaraz ci ten gambit sandomierski wytłumaczę',
-                'a idź ty do kościoła'
+                'a idź ty do kościoła',
+                'moment, sprzątam plebanię'
             ]
             await message.channel.send(choice(possibilities))
 
