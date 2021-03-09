@@ -5,6 +5,7 @@
 import json
 import discord
 from discord.ext import commands
+from random import choice
 
 intents = discord.Intents.default()
 intents.presences = True
@@ -70,7 +71,13 @@ class Helper(commands.Bot):
                 await message.delete()
 
         if self.user.mentioned_in(message):
-            await message.channel.send('czekaj bo gram w szachy teraz')
+            possibilities = [
+                'czekaj bo gram w szachy teraz',
+                'nie mogę teraz, zaszachował mnie ziomeczek',
+                'daj mi chwilę, zaraz ci ten gambit sandomierski wytłumaczę',
+                'a idź ty do kościoła'
+            ]
+            await message.channel.send(choice(possibilities))
 
         if message.author.bot: return
 
