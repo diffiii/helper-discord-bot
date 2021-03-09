@@ -49,6 +49,10 @@ class Helper(commands.Bot):
                 if message.author.id != self.user.id and message.author.id != 593767655584956426:
                     await message.delete()
 
+        for element in ['szachy', 'szaszki', 'piony', 'pionki']:
+            if element in message.content:
+                message.add_reaction(discord.utils.get(message.guild.emojis, name = 'gambit_sandomierski')
+
         await self.process_commands(message)
 
     def run(self):
