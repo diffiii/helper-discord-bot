@@ -51,7 +51,7 @@ class Helper(commands.Bot):
 
         for element in ['szachy', 'szaszki', 'piony', 'pionki']:
             if element in message.content:
-                message.add_reaction(discord.utils.get(message.guild.emojis, name = 'gambit_sandomierski'))
+                await message.add_reaction(discord.utils.get(message.guild.emojis, name = 'gambit_sandomierski'))
 
         await self.process_commands(message)
 
