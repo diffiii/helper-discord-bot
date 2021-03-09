@@ -3,6 +3,7 @@
     "prefix": ".",
     "extensions": [
         "cogs.admin",
+        "cogs.chess",
         "cogs.covid19",
         "cogs.nicks",
         "cogs.poke",
