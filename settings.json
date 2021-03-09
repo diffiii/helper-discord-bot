@@ -5,6 +5,7 @@
         "cogs.admin",
         "cogs.covid19",
         "cogs.nicks",
+        "cogs.poke",
         "cogs.support",
         "cogs.utilities"
     ]
