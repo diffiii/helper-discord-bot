@@ -50,7 +50,7 @@ class Helper(commands.Bot):
                     await message.delete()
 
         for element in ['szachy', 'szaszki', 'piony', 'pionki']:
-            if element in message.content:
+            if element in message.content.lower():
                 await message.add_reaction(discord.utils.get(message.guild.emojis, name = 'gambit_sandomierski'))
 
         await self.process_commands(message)
