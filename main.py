@@ -49,10 +49,30 @@ class Helper(commands.Bot):
                 if message.author.id != self.user.id and message.author.id != 593767655584956426:
                     await message.delete()
 
-        if message.reference is not None:
-            if '+1' in message.content:
-                await message.reference.add_reaction(discord.utils.get(message.guild.emojis, name = 'plusJeden'))
+        if message.content == '+1':
+            if message.reference is not None:
+                msg = await message.channel.fetch_message(message.reference.message_id)
+                await msg.add_reaction(discord.utils.get(message.guild.emojis, name = 'plusJeden'))
                 await message.delete()
+            else:
+                msg = await message.channel.history(limit = 2).flatten()
+                await msg[1].add_reaction(discord.utils.get(message.guild.emojis, name = 'plusJeden'))
+                await message.delete()
+
+        if message.content == '-1':
+            if message.reference is not None:
+                msg = await message.channel.fetch_message(message.reference.message_id)
+                await msg.add_reaction(discord.utils.get(message.guild.emojis, name = 'minusJeden'))
+                await message.delete()
+            else:
+                msg = await message.channel.history(limit = 2).flatten()
+                await msg[1].add_reaction(discord.utils.get(message.guild.emojis, name = 'minusJeden'))
+                await message.delete()
+
+        if self.user.mentioned_in(message):
+            await message.channel.send('czekaj bo gram w szachy teraz')
+
+        if message.author.bot: return
 
         for element in ['szachy', 'szaszki', 'piony', 'pionki']:
             if element in message.content.lower():
