@@ -12,7 +12,7 @@ class Support(commands.Cog):
 
         if ctx.message.channel.id in [770743052494176316, 776460154236305411]:
             message = await ctx.send(embed = discord.Embed(title = f'**PROPOZYCJA │ {ctx.author}**', description = contents, color = 0x66CCFF))
-            emojis = ['👍' ,'👎', discord.utils.get(message.guild.emojis, name = 'POGGERS')]
+            emojis = [discord.utils.get(message.guild.emojis, name = 'plusJeden') ,discord.utils.get(message.guild.emojis, name = 'minusJeden'), discord.utils.get(message.guild.emojis, name = 'POGGERS')]
             for emoji in emojis:
                 await message.add_reaction(emoji)
         else:
