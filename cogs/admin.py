@@ -16,7 +16,7 @@ class Admin(commands.Cog):
         else:
             await ctx.send('Podana ilość wiadomości jest nieprawidłowa.', delete_after = 3)
 
-    @commands.command()
+    @commands.command(aliases = ['spr'])
     @commands.has_permissions(administrator = True)
     async def sprawdzian(self, ctx, date, time, subject, *, material):
         await ctx.message.delete()

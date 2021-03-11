@@ -19,11 +19,14 @@ class Poke(commands.Cog):
                 await member.move_to(self.client.get_channel(temp))
             except:
                 pass
+
             await asyncio.sleep(0.5)
+
             try:
                 await member.move_to(self.client.get_channel(current))
             except:
                 pass
+            
             await asyncio.sleep(0.5)
 
 

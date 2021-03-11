@@ -8,6 +8,7 @@
         "cogs.nicks",
         "cogs.poke",
         "cogs.support",
+        "cogs.tictactoe",
         "cogs.utilities"
     ]
 }
