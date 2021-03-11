@@ -94,5 +94,11 @@ class TicTacToe(commands.Cog):
                     else:
                         self.game.turn = 'O' if self.game.turn == 'X' else 'X'
 
+    @commands.command()
+    async def adminstop(self, ctx):
+        self.game = None
+        self.message = None
+
+
 def setup(client):
     client.add_cog(TicTacToe(client))
