@@ -32,8 +32,8 @@ class Game:
 
     def is_draw(self) -> bool:
         if self.board[0][0] != ' ' and self.board[0][1] != ' ' and self.board[0][2] != ' ' and \
-        if self.board[1][0] != ' ' and self.board[1][1] != ' ' and self.board[1][2] != ' ' and \
-        if self.board[2][0] != ' ' and self.board[2][1] != ' ' and self.board[2][2] != ' ' and not self.check():
+           self.board[1][0] != ' ' and self.board[1][1] != ' ' and self.board[1][2] != ' ' and \
+           self.board[2][0] != ' ' and self.board[2][1] != ' ' and self.board[2][2] != ' ' and not self.check():
             return True
         return False
 
