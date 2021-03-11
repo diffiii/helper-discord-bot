@@ -30,6 +30,13 @@ class Game:
         self.board[0][2] == self.board[1][1] == self.board[2][0] != ' ': return True
         return False
 
+    def is_draw(self) -> bool:
+        if self.board[0][0] != ' ' and self.board[0][1] != ' ' and self.board[0][2] != ' ' and \
+        if self.board[1][0] != ' ' and self.board[1][1] != ' ' and self.board[1][2] != ' ' and \
+        if self.board[2][0] != ' ' and self.board[2][1] != ' ' and self.board[2][2] != ' ' and not self.check():
+            return True
+        return False
+
 
 class TicTacToe(commands.Cog):
     def __init__(self, client):
@@ -73,9 +80,14 @@ class TicTacToe(commands.Cog):
             if (self.game.turn == 'X' and user.id == self.playerX.id) or (self.game.turn == 'O' and user.id == self.playerO.id):
                 if self.game.change(choices[reaction.emoji], self.game.turn):
                     await self.message.edit(content = self.game.get())
+                    if self.game.is_draw():
+                        await self.message.channel.send(f'Remis!')
+                        await self.message.clear_reactions()
+                        self.game = None
+                        self.message = None
                     if self.game.check():
                         winner = self.playerX.mention if self.game.turn == 'X' else self.playerO.mention
-                        await self.message.channel.send(f'{winner} wygrał(a).')
+                        await self.message.channel.send(f'{winner} wygrał(a)!')
                         await self.message.clear_reactions()
                         self.game = None
                         self.message = None
