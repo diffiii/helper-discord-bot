@@ -50,7 +50,7 @@ class TicTacToe(commands.Cog):
         if ctx.author.id == member.id and ctx.author.id != 593767655584956426:
             await ctx.send('Nie możesz zagrać sam ze sobą.', delete_after = 5)
             return
-        emojis = ['↖️', '⬆️', '↗️', '⬅️', '⏺️', '➡️', '↙️', '⬇️', '↘️']
+        emojis = ['↖️', '⬆️', '↗️', '⬅️', '⏺️', '➡️', '↙️', '⬇️', '↘️', '❌']
         if self.game is None:
             self.playerX = ctx.author
             self.playerO = member
@@ -66,6 +66,12 @@ class TicTacToe(commands.Cog):
     async def on_reaction_add(self, reaction, user):
         if reaction.message.id == self.message.id and user.id != self.client.user.id and self.game is not None:
             await self.message.remove_reaction(reaction, user)
+            if reaction.emoji == '❌':
+                await self.message.channel.send(f'{user.mention} poddał grę!')
+                await self.message.clear_reactions()
+                self.game = None
+                self.message = None
+                return
             choices = {
                 '↖️': (0, 0),
                 '⬆️': (0, 1),
@@ -81,16 +87,18 @@ class TicTacToe(commands.Cog):
                 if self.game.change(choices[reaction.emoji], self.game.turn):
                     await self.message.edit(content = self.game.get())
                     if self.game.is_draw():
-                        await self.message.channel.send(f'Remis!')
+                        await self.message.channel.send('Remis!')
                         await self.message.clear_reactions()
                         self.game = None
                         self.message = None
+                        return
                     if self.game.check():
                         winner = self.playerX.mention if self.game.turn == 'X' else self.playerO.mention
                         await self.message.channel.send(f'{winner} wygrał(a)!')
                         await self.message.clear_reactions()
                         self.game = None
                         self.message = None
+                        return
                     else:
                         self.game.turn = 'O' if self.game.turn == 'X' else 'X'
 
