@@ -44,7 +44,7 @@ class TicTacToe(commands.Cog):
         self.game = None
         self.message = None
 
-    async def end(self, ctx, info = None):
+    async def end(self, channel, info = None):
         await self.message.channel.send(info)
         await self.message.clear_reactions()
         self.game = None
@@ -73,7 +73,7 @@ class TicTacToe(commands.Cog):
         if reaction.message.id == self.message.id and user.id != self.client.user.id and self.game is not None:
             await self.message.remove_reaction(reaction, user)
             if reaction.emoji == '❌':
-                await self.end(ctx, f'{user.mention} poddał grę!')
+                await self.end(reaction.message.channel, f'{user.mention} poddał grę!')
                 return
             choices = {
                 '↖️': (0, 0),
@@ -90,11 +90,11 @@ class TicTacToe(commands.Cog):
                 if self.game.change(choices[reaction.emoji], self.game.turn):
                     await self.message.edit(content = self.game.get())
                     if self.game.is_draw():
-                        await self.end(ctx, 'Remis!')
+                        await self.end(reaction.message.channel, 'Remis!')
                         return
                     if self.game.check():
                         winner = self.playerX.mention if self.game.turn == 'X' else self.playerO.mention
-                        await self.end(ctx, f'{winner} wygrał(a)!')
+                        await self.end(reaction.message.channel, f'{winner} wygrał(a)!')
                         return
                     else:
                         self.game.turn = 'O' if self.game.turn == 'X' else 'X'
