@@ -101,6 +101,8 @@ class TicTacToe(commands.Cog):
 
     @commands.command()
     async def adminstop(self, ctx):
+        await ctx.message.delete()
+        await self.message.delete()
         self.game = None
         self.message = None
 
