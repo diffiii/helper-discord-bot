@@ -39,7 +39,7 @@ class Statistics(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        if message.author != self.client:
+        if message.author.id != self.client.user.id:
             custom_emojis = re.findall(r'<:\w*:\d*>', message.content)
             custom_emojis = [int(e.split(':')[2].replace('>', '')) for e in custom_emojis]
             custom_emojis = [discord.utils.get(await message.guild.fetch_emojis(), id = e) for e in custom_emojis]
