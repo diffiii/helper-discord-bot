@@ -9,6 +9,7 @@
         "cogs.poke",
         "cogs.support",
         "cogs.tictactoe",
-        "cogs.utilities"
+        "cogs.utilities",
+        "cogs.statistics"
     ]
 }
