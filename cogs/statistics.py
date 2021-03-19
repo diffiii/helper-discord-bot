@@ -17,6 +17,26 @@ class Statistics(commands.Cog):
     #             stats[emoji.name] = 0
     #     write_json('stats.json', stats)
 
+    @commands.command()
+    async def topka(self, ctx):
+        stats = load_json('stats.json')
+        stats = sorted(stats.items(), key=lambda item: item[1])[::-1][:10]
+        final = []
+        for i in range(10):
+            final.append(f'{discord.utils.get(ctx.guild.emojis, name = stats[i][0])}: {stats[i][1]}')
+        final = '\n'.join(final)
+        await ctx.send(final)
+
+    @commands.command()
+    async def antytopka(self, ctx):
+        stats = load_json('stats.json')
+        stats = sorted(stats.items(), key=lambda item: item[1])[:10]
+        final = []
+        for i in range(10):
+            final.append(f'{discord.utils.get(ctx.guild.emojis, name = stats[i][0])}: {stats[i][1]}')
+        final = '\n'.join(final)
+        await ctx.send(final)
+
     @commands.Cog.listener()
     async def on_message(self, message):
         custom_emojis = re.findall(r'<:\w*:\d*>', message.content)

@@ -7,9 +7,7 @@ import discord
 from discord.ext import commands
 from random import choice
 
-intents = discord.Intents.default()
-intents.presences = True
-intents.members = True
+intents = discord.Intents.all()
 
 
 def load_json(filename):
