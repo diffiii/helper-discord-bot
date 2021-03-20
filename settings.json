@@ -10,6 +10,7 @@
         "cogs.support",
         "cogs.tictactoe",
         "cogs.utilities",
-        "cogs.statistics"
+        "cogs.statistics",
+        "cogs.messages"
     ]
 }
