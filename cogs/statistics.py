@@ -8,15 +8,6 @@ class Statistics(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    # @commands.command()
-    # async def test(self, ctx):
-    #     emojis = await ctx.guild.fetch_emojis()
-    #     stats = {}
-    #     for emoji in emojis:
-    #         if emoji.animated == False:
-    #             stats[emoji.name] = 0
-    #     write_json('stats.json', stats)
-
     @commands.command()
     async def topka(self, ctx):
         stats = load_json('stats.json')
