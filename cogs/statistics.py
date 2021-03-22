@@ -39,6 +39,13 @@ class Statistics(commands.Cog):
                 stats[emoji.name] += 1
             write_json('stats.json', stats)
 
+    @commands.Cog.listener()
+    async def on_reaction_add(self, reaction, user):
+        if user.id != self.client.user.id:
+            stats = load_json('stats.json')
+            stats[reaction.emoji.name] += 1
+            write_json('stats.json', stats)
+
 
 def setup(client):
     client.add_cog(Statistics(client))
