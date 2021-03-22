@@ -70,7 +70,7 @@ class TicTacToe(commands.Cog):
 
     @commands.Cog.listener()
     async def on_reaction_add(self, reaction, user):
-        if reaction.message.id == self.message.id and user.id != self.client.user.id and self.game is not None:
+        if self.game is not None and reaction.message.id == self.message.id and user.id != self.client.user.id:
             await self.message.remove_reaction(reaction, user)
             if reaction.emoji == '❌' and (user.id == self.playerX.id or user.id == self.playerO.id):
                 await self.end(reaction.message.channel, f'{user.mention} poddał(a) grę!')
