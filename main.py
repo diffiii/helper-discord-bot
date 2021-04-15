@@ -68,7 +68,7 @@ class Helper(commands.Bot):
                 await msg[1].add_reaction(discord.utils.get(message.guild.emojis, name = 'minusJeden'))
                 await message.delete()
 
-        if self.user.mentioned_in(message):
+        if self.user.mentioned_in(message) and not message.mention_everyone:
             possibilities = [
                 'czekaj bo gram w szachy teraz',
                 'nie mogę teraz, zaszachował mnie ziomeczek',
