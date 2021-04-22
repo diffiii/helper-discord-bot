@@ -2,3 +2,5 @@ __pycache__/
 cogs/__pycache__/
 desktop.ini
 stats.json
+settings.json
+cogs/admin.py
